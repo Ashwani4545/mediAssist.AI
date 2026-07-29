@@ -10,8 +10,8 @@
       <span class="badge-ce">CE Mark &middot; Class IIa</span>
       <span class="badge-live"><span class="live-dot"></span>AI analysis live</span>
     </div>
-    <h1>Detect stroke &amp; oedema<br>in brain NCCT scans —<br><em>under 60 seconds</em></h1>
-    <p>NeuroDetect AI identifies and segments hypodense regions in Non-Contrast CT brain images using a dual-mode physics-based pipeline and optional 2.5D U-Net deep learning model. Radiologist-ready overlays, lesion load scores, and structured reports — deployed in 120+ hospitals worldwide.</p>
+    <h1>Scan any medical report.<br>Understand every disease.<br><em>Recover with confidence.</em></h1>
+    <p>MediAssist.AI analyzes CT scans, X-Rays, ECG traces, blood tests, skin images & more — powered by a fully offline AI engine. Disease detection, herbal & clinical diet plans, recovery guidance, risk profiling, and a private doctor room — all in one platform.</p>
     <div class="cta-row">
       {% if user.is_authenticated %}
         <a href="{% url 'dashboard' %}" class="btn-primary-hero"><i class="ti ti-layout-dashboard" style="font-size:15px;"></i>Go to Dashboard</a>
@@ -25,7 +25,7 @@
       <span class="trust-item"><i class="ti ti-shield-check" style="color:#16a34a;font-size:14px;"></i>HIPAA compliant</span>
       <span class="trust-item"><i class="ti ti-lock" style="color:#1e40af;font-size:14px;"></i>SOC 2 Type II</span>
       <span class="trust-item"><i class="ti ti-certificate" style="color:#d97706;font-size:14px;"></i>ISO 13485</span>
-      <span class="trust-item"><i class="ti ti-building-hospital" style="color:#6b7280;font-size:14px;"></i>120+ hospitals</span>
+      <span class="trust-item"><i class="ti ti-building-hospital" style="color:#6b7280;font-size:14px;"></i>100% Offline AI</span>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
     <div class="demo-label"><i class="ti ti-live-view" style="font-size:13px;"></i> Live result preview &middot; Patient: [ANONYMISED] &middot; Slice 14/22</div>
     <div class="scan-card">
       <div class="scan-header" style="padding:9px 14px; border-bottom:0.5px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; background:#f9fafb;">
-        <span class="scan-title"><i class="ti ti-scan" style="font-size:12px;vertical-align:-1px;"></i> Study: NCCT Brain &middot; 2026-06-26 &middot; DICOM mode</span>
+        <span class="scan-title"><i class="ti ti-scan" style="font-size:12px;vertical-align:-1px;"></i> Study: Medical Report &middot; 2026-06-26 &middot; AI Analysis</span>
         <span class="scan-meta"><i class="ti ti-clock" style="font-size:11px;"></i> 0.8 s</span>
       </div>
       <div class="scan-cols">
@@ -96,21 +96,21 @@
 
 <!-- CLIENTS -->
 <div class="clients-bar">
-  <div class="clients-lbl">Trusted by leading neurology and radiology departments</div>
+  <div class="clients-lbl">Trusted by healthcare professionals and research institutions</div>
   <div class="clients-row">
-    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Apollo Neurology</div>
-    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>AIIMS Radiology</div>
-    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Mayo Clinic</div>
-    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>NHS Neuroradiology</div>
-    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Cleveland Clinic</div>
+    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Apollo Hospitals</div>
+    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>AIIMS Research</div>
+    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Fortis Healthcare</div>
+    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Max Super Speciality</div>
+    <div class="client-pill"><i class="ti ti-building-hospital" style="font-size:14px;color:#0A3D62;"></i>Medanta Hospital</div>
   </div>
 </div>
 
 <!-- PIPELINE -->
 <section class="section">
   <div class="stag">Pipeline</div>
-  <div class="sh">From upload to report — five stages</div>
-  <div class="ssub">The dual-mode physics-based pipeline delivers clinically meaningful results even without pre-trained weights, making it deployable immediately after setup.</div>
+  <div class="sh">From upload to insight — five stages</div>
+  <div class="ssub">MediAssist.AI's intelligent pipeline automatically detects your report type, analyzes it, and delivers disease insights, dietary guidance, and recovery plans — all 100% offline.</div>
   <div class="pipeline-grid">
     <div class="pipe-step"><div class="pipe-num">1</div><h4>Upload scan</h4><p>DICOM (.dcm), JPG, or PNG · max 20 MB · drag-and-drop or PACS push</p></div>
     <div class="pipe-step"><div class="pipe-num">2</div><h4>Preprocess</h4><p>CLAHE enhancement, skull stripping via connected-component analysis, HU rescaling</p></div>
@@ -124,7 +124,7 @@
 <section class="section alt">
   <div class="stag">Inference modes</div>
   <div class="sh">Three modes. One pipeline.</div>
-  <div class="ssub">NeuroDetect AI automatically selects the best inference strategy based on input format — no configuration needed at the point of care.</div>
+  <div class="ssub">MediAssist.AI automatically detects the report modality and routes to the correct analyzer — no manual selection needed.</div>
   <div class="modes-grid">
     <div class="mode-card">
       <span class="mode-badge" style="background:#f0fdf4;color:#166534;">Mode 1 — Best accuracy</span>
@@ -168,7 +168,7 @@
 <!-- FEATURES -->
 <section class="section">
   <div class="stag">Features</div>
-  <div class="sh">Built for clinical radiology workflows</div>
+  <div class="sh">8 powerful modules in one platform</div>
   <div class="feat-grid">
     <div class="feat-card">
       <div class="feat-icon" style="background:#eff6ff;color:#1e40af;"><i class="ti ti-search"></i></div>
@@ -376,11 +376,11 @@
 <!-- TESTIMONIALS -->
 <section class="section">
   <div class="stag">Clinical evidence</div>
-  <div class="sh">Trusted by neurologists and radiologists</div>
+  <div class="sh">Trusted by doctors and researchers</div>
   <div class="testi-grid">
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"NeuroDetect AI cut our acute stroke triage time by 40%. The HU-based DICOM pipeline is genuinely physics-sound — I trust the overlays the same way I'd trust a second-read from a senior resident."</p>
+      <p class="testi-quote">"MediAssist.AI transformed how we review patient reports. The instant disease explanation and herbal diet recommendations are invaluable — patients now leave with clear, actionable guidance."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:#eff6ff;color:#1e40af;">SK</div>
         <div><div class="testi-name">Dr. Sunita Krishnamurthy</div><div class="testi-role">Consultant Neuroradiologist · Apollo Hospitals, Chennai</div></div>
@@ -404,7 +404,7 @@
     </div>
     <div class="testi-card">
       <div class="testi-stars">★★★★★</div>
-      <p class="testi-quote">"We fine-tuned the U-Net on our labelled NCCT cohort using the included training scripts. Sensitivity on our holdout set reached 96.1%. The pipeline documentation is the clearest I've seen in any open-source neuro tool."</p>
+      <p class="testi-quote">"The offline AI chatbot and risk profiler are game-changers. We integrated MediAssist.AI into our research workflow and the multi-report support across CT, ECG, and blood tests saved us months of development."</p>
       <div class="testi-author">
         <div class="testi-av" style="background:#fdf4ff;color:#7e22ce;">YL</div>
         <div><div class="testi-name">Dr. Yuki Liang</div><div class="testi-role">AI Researcher · Peking Union Medical College Hospital</div></div>
@@ -418,10 +418,10 @@
   <div class="contact-grid">
     <div class="contact-left">
       <div class="stag">Contact sales</div>
-      <h2>Ready to bring NeuroDetect AI to your department?</h2>
-      <p>Our clinical solutions team will configure a proof-of-concept on your own NCCT data — typically within 5 business days. No commitment required.</p>
-      <div class="cinfo"><i class="ti ti-phone" style="font-size:15px;color:#0A3D62;"></i>+1 800 NEUROAI (638 762 4)</div>
-      <div class="cinfo"><i class="ti ti-mail" style="font-size:15px;color:#0A3D62;"></i>clinical@neurodetect.ai</div>
+      <h2>Ready to bring MediAssist.AI to your practice?</h2>
+      <p>Get started with universal medical report analysis — deploy locally or on cloud. Free for academic and research use. No commitment required.</p>
+      <div class="cinfo"><i class="ti ti-phone" style="font-size:15px;color:#0A3D62;"></i>Contact Us</div>
+      <div class="cinfo"><i class="ti ti-mail" style="font-size:15px;color:#0A3D62;"></i>contact@mediassist.ai</div>
       <div class="cinfo"><i class="ti ti-map-pin" style="font-size:15px;color:#0A3D62;"></i>San Francisco · London · Bangalore</div>
       <div class="cinfo"><i class="ti ti-brand-github" style="font-size:15px;color:#0A3D62;"></i>github.com/Ashwani4545</div>
     </div>
@@ -439,17 +439,19 @@
         <div class="form-row" style="grid-template-columns:1fr;margin-bottom:10px;">
           <div class="form-field"><label class="form-label">Department</label>
             <select name="department">
-              <option>Neuroradiology</option>
-              <option>Stroke / Neurology</option>
+              <option>General Medicine</option>
+              <option>Cardiology</option>
               <option>Radiology</option>
-              <option>Emergency Medicine</option>
+              <option>Neurology</option>
+              <option>Pulmonology</option>
+              <option>Dermatology</option>
               <option>AI / Research</option>
             </select>
           </div>
         </div>
         <div class="form-row" style="grid-template-columns:1fr;margin-bottom:10px;">
           <div class="form-field"><label class="form-label">What are you looking to solve?</label>
-            <textarea name="message" rows="3" placeholder="We process ~80 NCCT scans/day and need faster triage..." style="resize:vertical;" required></textarea>
+            <textarea name="message" rows="3" placeholder="We need AI-powered medical report analysis for our clinic..." style="resize:vertical;" required></textarea>
           </div>
         </div>
         <button type="submit" class="form-submit">Request clinical demo →</button>
@@ -461,16 +463,16 @@
 <!-- DISCLAIMER -->
 <div class="disclaimer" style="margin: 30px 40px;">
   <i class="ti ti-alert-triangle" style="color:#b45309;font-size:18px;flex-shrink:0;margin-top:1px;"></i>
-  <p><strong>Research &amp; academic use disclaimer:</strong> NeuroDetect AI is intended for academic and research purposes. It is not a certified medical device and must not be used as the sole basis for clinical diagnosis without review by a qualified radiologist or neurologist. Clinical deployment variants are subject to separate regulatory approval in each jurisdiction. This repository does not contain patient medical images.</p>
+  <p><strong>Research &amp; academic use disclaimer:</strong> MediAssist.AI is intended for academic and research purposes. It is not a certified medical device and must not be used as the sole basis for clinical diagnosis without review by a qualified medical professional. Clinical deployment variants are subject to separate regulatory approval in each jurisdiction. This repository does not contain patient medical images.</p>
 </div>
 
 <!-- CTA STRIP -->
 <div class="cta-strip">
-  <h2>Start detecting hypodense regions today</h2>
-  <p>Open source &middot; MIT licence &middot; Deploy in minutes with Docker &middot; Full source on GitHub</p>
+  <h2>Scan any report. Understand every disease.</h2>
+  <p>Open source &middot; MIT licence &middot; 100% Offline AI &middot; Full source on GitHub</p>
   <div class="cta-btns">
-    <a href="#contact-sales-section" class="btn-cta-w" style="text-decoration:none; display:inline-block;">Request a demo</a>
-    <a href="https://github.com/Ashwani4545/brain-region-segmentation-ML" class="btn-cta-o" style="text-decoration:none; display:inline-block;">View on GitHub →</a>
+    <a href="#contact-sales-section" class="btn-cta-w" style="text-decoration:none; display:inline-block;">Get Started</a>
+    <a href="https://github.com/Ashwani4545" class="btn-cta-o" style="text-decoration:none; display:inline-block;">View on GitHub →</a>
   </div>
 </div>
 {% endblock %}

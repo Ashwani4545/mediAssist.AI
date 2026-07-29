@@ -1,5 +1,5 @@
 
-# 🧠 NeuroDetect AI — Brain NCCT Hypodense Region Segmentation
+# 🏥 MediAssist.AI — Universal Medical Intelligence Platform
 
 
 <div align="center">
@@ -10,24 +10,25 @@
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-lightblue?style=for-the-badge&logo=opencv)
 ![License](https://img.shields.io/badge/License-Academic-yellow?style=for-the-badge)
 
-**An AI-powered web application for detecting and segmenting hypodense regions (e.g., stroke-affected areas) from Brain Non-Contrast CT (NCCT) scans.**
-
-🚀 **Live Demo:** [Hugging Face Spaces](https://huggingface.co/spaces/Ashwani4545/neurodetect-ai)
+**An AI-powered universal medical intelligence platform for analyzing medical reports, CT scans, X-Rays, ECGs, blood test panels, skin images, and retinal scans — operating 100% offline.**
 
 </div>
 
 ---
 
 
-## 🎯 What This Does
+## 🎯 What MediAssist.AI Does
 
-NeuroDetect AI takes a Brain NCCT image (DICOM, JPG, or PNG) and:
+MediAssist.AI takes any clinical report or image (DICOM, JPG, PNG, or PDF) and automatically:
 
-1. **Detects hypodense regions** — areas darker than surrounding brain tissue, typical of ischemic stroke, oedema, or infarction
-2. **Generates a segmentation mask** — binary map of detected lesions
-3. **Produces an AI overlay** — original scan with red highlights and orange contour outlines on lesions
-4. **Reports a confidence score** — lesion load % (fraction of brain area that is hypodense)
-5. **Provides an Explainable AI summary** — plain-language interpretation of findings
+1. **Detects Report Modality** — routes CT scans, Chest X-Rays, ECG traces, Blood PDF reports, skin images & retinal scans automatically.
+2. **Performs AI Analysis** — identifies hypodense brain regions, lung opacities, heart rhythm anomalies, out-of-range blood metrics, skin lesions, and retinal disc-to-cup ratios.
+3. **Generates Visual Overlays & Masks** — provides semi-transparent lesion fills and contour outlines.
+4. **Delivers Plain-English Explanations** — explains what the disease is, how it occurred, and consequences if untreated.
+5. **Provides Herbal & Clinical Dietary Guidance** — condition-specific recommended foods, foods to avoid, and evidence-backed herbal remedies (Ashwagandha, Brahmi, Turmeric, etc.).
+6. **Offers Clinical Telemetry & Staged Recovery** — tracks key target parameters (BP, SpO2, BPM, HbA1c) and provides safe physical activity guidelines.
+7. **Calculates 10-Year Risk Profiles** — evaluates cardiovascular, diabetes, and stroke risk grades.
+8. **Facilitates Telehealth Doctor Room** — auto-generates 5–8 targeted questions for specialists and supports live doctor consultations.
 
 ---
 

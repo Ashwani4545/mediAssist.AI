@@ -400,7 +400,7 @@ def chat_api(request, scan_id):
 
             # Format system prompt
             system_prompt = (
-                "You are MedAssist, a compassionate AI healthcare companion on NeuroDetect AI. "
+                "You are MediAssist, a compassionate AI healthcare companion on MediAssist.AI. "
                 f"You MUST generate your entire response in {language} only. Speak naturally and adapt medical terms into region-appropriate dialect.\n"
                 f"You have just analyzed the patient's {scan.modality} report.\n"
                 f"Scan File: {scan.scan_name}\n"

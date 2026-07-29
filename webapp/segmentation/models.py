@@ -20,7 +20,7 @@ class PatientScan(models.Model):
         if not self.patient_id:
             year = datetime.now().year
             num = random.randint(10000, 99999)
-            self.patient_id = f"ND-{year}-{num}"
+            self.patient_id = f"MA-{year}-{num}"
         super().save(*args, **kwargs)
 
     class Meta:

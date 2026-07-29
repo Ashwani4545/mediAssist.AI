@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}NeuroDetect AI® — Clinical Brain NCCT Intelligence Platform{% endblock %}</title>
+    <title>{% block title %}MediAssist.AI® — Universal Medical Intelligence Platform{% endblock %}</title>
     {% load static %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="stylesheet" href="{% static 'segmentation/css/styles.css' %}">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
 
     <!-- TOPBAR -->
     <div class="topbar">
-        <span>🌍 Now CE-marked for EU clinical environments &middot; Class IIa Medical Device</span>
-        <span class="topbar-pill">New: DICOM PACS integration available</span>
+        <span>🌍 AI-powered analysis for CT, X-Ray, ECG, Blood Tests, Skin & more &middot; 100% Offline</span>
+        <span class="topbar-pill">New: Multi-report support available</span>
         <span style="opacity:0.4">|</span>
-        <span>Sales: +1 800 NEUROAI</span>
+        <span>Contact: mediassist.ai</span>
     </div>
 
     <!-- HEADER -->
     <header class="header">
         <a class="logo" href="{% url 'landing' %}">
-            <div class="logo-mark"><i class="ti ti-brain" style="color:#7BB8F0;font-size:19px;"></i></div>
+            <div class="logo-mark"><i class="ti ti-stethoscope" style="color:#7BB8F0;font-size:19px;"></i></div>
             <div>
-                <span class="logo-name">NeuroDetect AI<sup style="font-size:9px">®</sup></span>
-                <span class="logo-sub">Clinical Neuroimaging Intelligence</span>
+                <span class="logo-name">MediAssist.AI<sup style="font-size:9px">®</sup></span>
+                <span class="logo-sub">Universal Medical Intelligence</span>
             </div>
         </a>
         <nav class="nav">
@@ -60,10 +60,10 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="flogo">
-                    <div class="flogo-mark"><i class="ti ti-brain" style="color:#7BB8F0;font-size:17px;"></i></div>
-                    <div><span class="flogo-name">NeuroDetect AI®</span><span class="flogo-sub">Clinical Neuroimaging Intelligence</span></div>
+                    <div class="flogo-mark"><i class="ti ti-stethoscope" style="color:#7BB8F0;font-size:17px;"></i></div>
+                    <div><span class="flogo-name">MediAssist.AI®</span><span class="flogo-sub">Universal Medical Intelligence</span></div>
                 </div>
-                <p>AI-powered hypodense region segmentation for brain NCCT scans. Built on PyTorch + Django. Open-source, research-grade, enterprise-ready.</p>
+                <p>AI-powered medical report analysis for CT, X-Ray, ECG, Blood Tests & more. Built on PyTorch + Django. Open-source, research-grade, privacy-first.</p>
             </div>
             <div class="footer-col">
                 <h5>Product</h5>

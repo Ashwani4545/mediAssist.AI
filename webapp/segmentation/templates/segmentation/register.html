@@ -1,13 +1,14 @@
 {% extends 'segmentation/base.html' %}
 {% load static %}
 
-{% block title %}Sign Up | NeuroDetect AI{% endblock %}
+{% block title %}Sign Up | MediAssist.AI{% endblock %}
+{% block body_class %}dark-theme auth-body{% endblock %}
 
 {% block content %}
 <div class="auth-container">
-    <div class="auth-card">
-        <h2>Create Account</h2>
-        <p>Join NeuroDetect AI to securely save and access your diagnostic scans.</p>
+    <div class="glass-panel auth-card">
+        <h2 class="auth-title">Create Account</h2>
+        <p>Join MediAssist.AI to securely save and access your diagnostic reports.</p>
         
         {% if messages %}
             {% for message in messages %}

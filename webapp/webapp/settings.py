@@ -20,7 +20,7 @@ ALLOWED_HOSTS = [h.strip() for h in _allowed.split(',')]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.hf.space',
-    'https://ashwani4545-neurodetect-ai.hf.space',
+    'https://ashwani4545-mediassist-ai.hf.space',
 ]
 
 # Allow cookies in Hugging Face iframe

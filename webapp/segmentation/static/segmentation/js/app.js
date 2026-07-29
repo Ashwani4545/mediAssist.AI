@@ -359,8 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.modality === 'BLOOD_TEST') modalityName = "Blood Panel";
         
         const msg = data.detected 
-            ? `Hello, I am MedAssist, your compassionate care companion. I have reviewed your ${modalityName} results. The analysis noted some anomalies (${data.findings_text}). I understand this can cause anxiety, but please know I am here to help explain what these results mean in simple terms. How can I support you right now?`
-            : `Hello, I am MedAssist, your compassionate care companion. I have reviewed your ${modalityName} report. The analysis did not flag any significant anomalies (confidence: ${data.confidence}). I am here if you have any questions or would like details on any of these parameters. What would you like to discuss?`;
+            ? `Hello, I am MediAssist, your compassionate care companion. I have reviewed your ${modalityName} results. The analysis noted some anomalies (${data.findings_text}). I understand this can cause anxiety, but please know I am here to help explain what these results mean in simple terms. How can I support you right now?`
+            : `Hello, I am MediAssist, your compassionate care companion. I have reviewed your ${modalityName} report. The analysis did not flag any significant anomalies (confidence: ${data.confidence}). I am here if you have any questions or would like details on any of these parameters. What would you like to discuss?`;
             
         addMessageBubble('assistant', msg);
     }
