@@ -462,7 +462,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function populateGuidanceTabs(guidance) {
         if (!guidance) return;
         
-        // 1. Populate Diet Tab
+        // 0. Populate Disease Breakdown elements
+        const whatElem = document.getElementById('diseaseWhatItIs');
+        const howElem = document.getElementById('diseaseHowItOccurred');
+        const untreatedElem = document.getElementById('diseaseIfUntreated');
+        if (whatElem) whatElem.innerText = guidance.what_it_is || '--';
+        if (howElem) howElem.innerText = guidance.how_it_occurred || '--';
+        if (untreatedElem) untreatedElem.innerText = guidance.if_untreated || '--';
+
+        // 1. Populate Diet Tab & Herbal Remedies
         const diet = guidance.diet || {};
         const recList = document.getElementById('dietRecommendedList');
         const avoidList = document.getElementById('dietAvoidList');
@@ -480,6 +488,27 @@ document.addEventListener('DOMContentLoaded', () => {
             avoidList.appendChild(li);
         });
         document.getElementById('dietReasoningText').innerText = diet.reasoning || '--';
+        
+        // Populate Herbal Remedies
+        const herbalContainer = document.getElementById('herbalRemediesContainer');
+        if (herbalContainer) {
+            herbalContainer.innerHTML = '';
+            const remedies = diet.herbal_remedies || [];
+            if (remedies.length === 0) {
+                herbalContainer.innerHTML = '<p style="font-size: 11px; color: var(--text-secondary); margin: 0;">No specific herbal supplements required.</p>';
+            } else {
+                remedies.forEach(h => {
+                    const card = document.createElement('div');
+                    card.style.cssText = "background: #fff; padding: 8px 10px; border-radius: 6px; border: 0.5px solid #6ee7b7; box-shadow: 0 1px 2px rgba(0,0,0,0.03);";
+                    card.innerHTML = `
+                        <h6 style="font-size: 11px; font-weight: 700; color: #047857; margin: 0 0 3px 0;">🌿 ${h.name}</h6>
+                        <p style="font-size: 10px; color: var(--text-secondary); margin: 0 0 4px 0; line-height: 1.4;">${h.benefit}</p>
+                        <span style="font-size: 9.5px; font-weight: 600; color: #059669; background: #ecfdf5; padding: 2px 5px; border-radius: 4px; display: inline-block;">Dosage: ${h.dosage}</span>
+                    `;
+                    herbalContainer.appendChild(card);
+                });
+            }
+        }
         
         // 2. Populate Recovery & Exercise Tab
         const exercise = guidance.exercise || {};

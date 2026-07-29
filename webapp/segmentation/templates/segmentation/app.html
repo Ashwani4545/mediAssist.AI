@@ -101,10 +101,26 @@
                             
                             <!-- Tab 1: Clinical Telemetry (default active) -->
                             <div class="tab-pane active" id="tab-imaging">
-                                <h4 style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;"><i class="ti ti-sparkles" style="color: var(--accent-primary);"></i> AI Explainable Overview</h4>
-                                <p id="explainText" style="font-size: 12.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 0;">
+                                <h4 style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px;"><i class="ti ti-sparkles" style="color: var(--accent-primary);"></i> AI Disease Breakdown &amp; Clinical Overview</h4>
+                                <p id="explainText" style="font-size: 12.5px; line-height: 1.6; color: var(--text-secondary); margin-bottom: 12px;">
                                     The clinical report/scan is parsed and logged. Processing benchmarks indicate normal ranges.
                                 </p>
+
+                                <!-- Disease Breakdown Grid -->
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 15px;">
+                                    <div style="background: #f9fafb; padding: 12px; border-radius: 8px; border-left: 3.5px solid var(--accent-primary); border: 0.5px solid #e5e7eb;">
+                                        <h5 style="font-size: 11.5px; font-weight: 600; color: var(--accent-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 4px;"><i class="ti ti-notes"></i> What It Is</h5>
+                                        <p id="diseaseWhatItIs" style="font-size: 11px; color: var(--text-secondary); margin: 0; line-height: 1.5;">--</p>
+                                    </div>
+                                    <div style="background: #f9fafb; padding: 12px; border-radius: 8px; border-left: 3.5px solid #f59e0b; border: 0.5px solid #e5e7eb;">
+                                        <h5 style="font-size: 11.5px; font-weight: 600; color: #d97706; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;"><i class="ti ti-microscope"></i> How It Occurred</h5>
+                                        <p id="diseaseHowItOccurred" style="font-size: 11px; color: var(--text-secondary); margin: 0; line-height: 1.5;">--</p>
+                                    </div>
+                                    <div style="background: #fff5f5; padding: 12px; border-radius: 8px; border-left: 3.5px solid #ef4444; border: 0.5px solid #fecaca;">
+                                        <h5 style="font-size: 11.5px; font-weight: 600; color: #dc2626; margin-bottom: 4px; display: flex; align-items: center; gap: 4px;"><i class="ti ti-alert-triangle"></i> What Happens If Untreated</h5>
+                                        <p id="diseaseIfUntreated" style="font-size: 11px; color: var(--text-secondary); margin: 0; line-height: 1.5;">--</p>
+                                    </div>
+                                </div>
                                  
                                  <!-- Wearable Vitals Sync Panel -->
                                  <div style="background: rgba(16, 185, 129, 0.01); padding: 12px; border-radius: 8px; border: 0.5px solid #e5e7eb; margin-top: 15px;">
@@ -153,6 +169,15 @@
                                         </ul>
                                     </div>
                                 </div>
+                                
+                                <!-- Herbal Diet & Remedies Card -->
+                                <div style="margin-top: 15px; background: rgba(16, 185, 129, 0.04); padding: 12px; border-radius: 8px; border: 0.5px solid #a7f3d0;">
+                                    <h5 style="color: #047857; font-size: 12px; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 4px;"><i class="ti ti-plant" style="font-size: 15px;"></i> Evidence-Backed Herbal Remedies &amp; Supplements</h5>
+                                    <div id="herbalRemediesContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+                                        <!-- Dynamic herbal items -->
+                                    </div>
+                                </div>
+
                                 <div style="margin-top: 1rem; border-top: 1px solid #f3f4f6; padding-top: 0.75rem;">
                                     <p style="font-size: 11.5px; color: var(--text-secondary); margin: 0;"><strong style="color: var(--text-primary);">Clinical Reasoning:</strong> <span id="dietReasoningText">--</span></p>
                                 </div>
@@ -389,10 +414,12 @@
                         
                         <!-- Quick Question Tags -->
                         <div class="chatbot-tags" id="chatTags">
-                            <span class="chat-tag" data-msg="Explain the scan findings in simple terms.">Explain Scan</span>
-                            <span class="chat-tag" data-msg="What does lesion load indicate?">What is Lesion Load?</span>
-                            <span class="chat-tag" data-msg="What doctor should I see next?">Specialist Referral</span>
-                            <span class="chat-tag" data-msg="Is this result an emergency?">Emergency Signs?</span>
+                            <span class="chat-tag" data-msg="Explain what this disease is and how it occurred.">Explain Disease</span>
+                            <span class="chat-tag" data-msg="What happens if this disease goes untreated?">Untreated Risks</span>
+                            <span class="chat-tag" data-msg="What herbal remedies can I take for this?">Herbal Diet</span>
+                            <span class="chat-tag" data-msg="What foods should I eat and avoid?">Diet Plan</span>
+                            <span class="chat-tag" data-msg="What doctor specialist should I see?">Specialist Guide</span>
+                            <span class="chat-tag" data-msg="Is this an emergency situation?">Emergency Check</span>
                         </div>
                         
                         <!-- Input field -->
