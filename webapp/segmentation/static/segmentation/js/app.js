@@ -357,6 +357,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.modality === 'CXR') modalityName = "Chest X-Ray";
         if (data.modality === 'ECG') modalityName = "ECG Waveform";
         if (data.modality === 'BLOOD_TEST') modalityName = "Blood Panel";
+        if (data.modality === 'DERMATO') modalityName = "Dermatology Scan";
+        if (data.modality === 'RETINAL') modalityName = "Retinal Fundus Scan";
+        if (data.modality === 'BONE_XRAY') modalityName = "Bone X-Ray";
         
         const msg = data.detected 
             ? `Hello, I am MediAssist, your compassionate care companion. I have reviewed your ${modalityName} results. The analysis noted some anomalies (${data.findings_text}). I understand this can cause anxiety, but please know I am here to help explain what these results mean in simple terms. How can I support you right now?`

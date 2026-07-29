@@ -13,7 +13,7 @@
             <div class="upload-content">
                 <i class="ti ti-cloud-upload" style="font-size: 48px; color: var(--accent-primary);"></i>
                 <p style="font-size: 14px; font-weight: 500; color: var(--text-primary);">Drag and drop medical report or scan here or <strong style="color: var(--accent-primary); text-decoration: underline;">Click to browse</strong></p>
-                <p class="text-sm">Supported clinical formats: JPG, PNG, DICOM (.dcm), PDF (.pdf)</p>
+                <p class="text-sm">Supported modalities: Brain CT/MRI, Chest X-Ray, ECG Traces, Blood Lab PDF, Skin Dermoscopy, Retinal Fundus, Bone X-Ray (JPG, PNG, DICOM, PDF)</p>
             </div>
             <input type="file" id="fileInput" accept="image/png, image/jpeg, .dcm, .pdf" style="display: none;">
         </div>
@@ -21,7 +21,7 @@
         <!-- Loading State -->
         <div id="loadingState" class="hidden">
             <div class="spinner"></div>
-            <p style="font-size: 13.5px; font-weight: 500; color: var(--accent-primary);">Analyzing clinical metrics, OCR mapping & Hounsfield thresholding...</p>
+            <p style="font-size: 13.5px; font-weight: 500; color: var(--accent-primary);">Routing report, running computer vision models & generating clinical insights...</p>
         </div>
 
         <!-- Results Section -->

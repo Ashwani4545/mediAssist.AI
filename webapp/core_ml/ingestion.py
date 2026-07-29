@@ -5,6 +5,9 @@ from core_ml.inference_service import get_inference_service
 from core_ml.chest_xray import get_chest_xray_analyzer
 from core_ml.ecg import get_ecg_analyzer
 from core_ml.blood_test import get_blood_test_analyzer
+from core_ml.skin_analyzer import get_skin_analyzer
+from core_ml.retinal_analyzer import get_retinal_analyzer
+from core_ml.bone_xray_analyzer import get_bone_xray_analyzer
 
 class IngestionService:
     def __init__(self):
@@ -16,7 +19,7 @@ class IngestionService:
         
         Returns:
             dict containing:
-                'modality': str ('CT', 'CXR', 'ECG', 'BLOOD_TEST')
+                'modality': str ('CT', 'CXR', 'ECG', 'BLOOD_TEST', 'DERMATO', 'RETINAL', 'BONE_XRAY')
                 'result': dict (specific findings of the routed model)
         """
         ext = os.path.splitext(file_path.lower())[1]
@@ -78,6 +81,27 @@ class IngestionService:
                 res = analyzer.process_image(file_path, output_dir)
                 return {
                     'modality': 'CXR',
+                    'result': res
+                }
+            elif any(w in filename for w in ['skin', 'derm', 'lesion', 'mole', 'dermatology', 'melanoma', 'rash']):
+                analyzer = get_skin_analyzer()
+                res = analyzer.process_image(file_path, output_dir)
+                return {
+                    'modality': 'DERMATO',
+                    'result': res
+                }
+            elif any(w in filename for w in ['eye', 'retina', 'retinal', 'fundus', 'macula', 'optic', 'glaucoma']):
+                analyzer = get_retinal_analyzer()
+                res = analyzer.process_image(file_path, output_dir)
+                return {
+                    'modality': 'RETINAL',
+                    'result': res
+                }
+            elif any(w in filename for w in ['bone', 'fracture', 'joint', 'knee', 'femur', 'spine', 'ortho', 'skeletal']):
+                analyzer = get_bone_xray_analyzer()
+                res = analyzer.process_image(file_path, output_dir)
+                return {
+                    'modality': 'BONE_XRAY',
                     'result': res
                 }
             elif any(w in filename for w in ['brain', 'ct', 'ncct', 'head', 'mri', 'stroke', 'slice']):
