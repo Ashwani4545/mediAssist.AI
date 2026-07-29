@@ -15,6 +15,12 @@ class PatientScan(models.Model):
     detected = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(blank=True, null=True)
+    disease_name = models.CharField(max_length=200, blank=True, null=True)
+    disease_explanation = models.TextField(blank=True, null=True)
+    disease_causes = models.TextField(blank=True, null=True)
+    untreated_consequences = models.TextField(blank=True, null=True)
+    herbal_recommendations = models.JSONField(default=list, blank=True)
+    telemetry_targets = models.JSONField(default=dict, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.patient_id:

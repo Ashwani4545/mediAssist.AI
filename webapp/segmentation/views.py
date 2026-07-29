@@ -241,9 +241,13 @@ def predict_api(request):
     except ValueError:
         raw_confidence = 0.0
 
+    # ── Generate Guidance First ──────────────────────────────────────────────
+    from core_ml.guidance import get_guidance_generator
+    generator = get_guidance_generator()
+    guidance_data = generator.generate_guidance(modality, result.get('findings_text', ''))
+
     # ── Save to Database ────────────────────────────────────────────────────
     scan_id = None
-    guidance_data = {}
     try:
         scan = PatientScan.objects.create(
             user=request.user if request.user.is_authenticated else None,
@@ -254,14 +258,15 @@ def predict_api(request):
             overlay_image=overlay_url,
             confidence=raw_confidence,
             detected=result['detected'],
-            notes=result.get('findings_text', '') # Store raw clinical findings in notes
+            notes=result.get('findings_text', ''),
+            disease_name=guidance_data.get('disease_name', ''),
+            disease_explanation=guidance_data.get('what_it_is', ''),
+            disease_causes=guidance_data.get('how_it_occurred', ''),
+            untreated_consequences=guidance_data.get('if_untreated', ''),
+            herbal_recommendations=guidance_data.get('diet', {}).get('herbal_remedies', []),
+            telemetry_targets=guidance_data.get('telemetry', {})
         )
         scan_id = scan.id
-        
-        # ── Generate & Save Guidance ────────────────────────────────────────
-        from core_ml.guidance import get_guidance_generator
-        generator = get_guidance_generator()
-        guidance_data = generator.generate_guidance(modality, result.get('findings_text', ''))
         
         PatientGuidance.objects.create(
             scan=scan,
