@@ -339,113 +339,14 @@ def chat_api(request, scan_id):
     # Retrieve chat history (including newly saved user message)
     history_objs = ChatMessage.objects.filter(scan=scan).order_by('timestamp')
     
-    # Check if Anthropic API is configured
-    api_key = getattr(settings, 'ANTHROPIC_API_KEY', None)
+    # ── Custom Local AI Chatbot Engine (100% Offline, Zero External APIs) ──
+    from core_ml.mediassist_chatbot import get_mediassist_chatbot
+    bot = get_mediassist_chatbot()
+    bot_res = bot.respond(user_msg_text, scan, history_objs, language)
     
-    assistant_response = ""
-    
-    if api_key:
-        try:
-            import anthropic
-            client = anthropic.Anthropic(api_key=api_key)
-            
-            # Determine specialist, findings label, and custom guidelines based on modality
-            specialist = "neurologist"
-            findings_label = "Hypodense regions"
-            extra_instructions = ""
-            
-            if scan.modality == 'CXR':
-                specialist = "pulmonologist"
-                findings_label = "Lung anomalies / consolidation"
-                extra_instructions = "Explain chest X-ray findings. Guide the patient regarding respiratory safety and symptoms like cough or shortness of breath."
-            elif scan.modality == 'ECG':
-                specialist = "cardiologist"
-                findings_label = "Heart rhythm abnormalities"
-                extra_instructions = "Explain Heart Rate (BPM) and standard waveform traces, and warn about symptoms like chest pain."
-            elif scan.modality == 'BLOOD_TEST':
-                specialist = "general physician"
-                findings_label = "Out-of-range lab metrics"
-                extra_instructions = "Help interpret metabolic, hematology, or sugar levels, and suggest standard diet tips."
-            else:
-                extra_instructions = "Explain brain CT scans. Warn about stroke signs like facial drooping, arm weakness, or slurred speech."
-                
-            # Query associated PatientGuidance from DB if it exists
-            guidance_context = ""
-            try:
-                guidance = scan.guidance
-                guidance_context = (
-                    "Patient recovery guidance blueprint:\n"
-                    f"- Diet recommended: {', '.join(guidance.diet_plan.get('recommended', []))}\n"
-                    f"- Diet to avoid: {', '.join(guidance.diet_plan.get('avoid', []))}\n"
-                    f"- Exercise allowed: {', '.join(guidance.exercise_plan.get('allowed', []))}\n"
-                    f"- Exercise restrictions: {', '.join(guidance.exercise_plan.get('restrictions', []))}\n"
-                    f"- Lifestyle red flags: {', '.join(guidance.lifestyle_plan.get('red_flags', []))}\n\n"
-                )
-            except Exception:
-                pass
-
-            # Query associated PatientRiskProfile from DB if it exists
-            risk_context = ""
-            try:
-                profile = scan.risk_profile
-                risk_context = (
-                    "Patient calculated risk profiles:\n"
-                    f"- Cardiovascular 10-year Risk: {profile.cv_risk_score}% ({profile.cv_risk_grade})\n"
-                    f"- Diabetes Type-II Risk: {profile.diabetes_risk_score}% ({profile.diabetes_risk_grade})\n"
-                    f"- Stroke Risk: {profile.stroke_risk_score}% ({profile.stroke_risk_grade})\n"
-                    f"- Parameters: age={profile.detailed_metrics.get('age')}, BP={profile.detailed_metrics.get('systolic_bp')} mmHg, BMI={profile.detailed_metrics.get('bmi')}, smoking={profile.detailed_metrics.get('smoking')}\n\n"
-                )
-            except Exception:
-                pass
-
-            # Format system prompt
-            system_prompt = (
-                "You are MediAssist, a compassionate AI healthcare companion on MediAssist.AI. "
-                f"You MUST generate your entire response in {language} only. Speak naturally and adapt medical terms into region-appropriate dialect.\n"
-                f"You have just analyzed the patient's {scan.modality} report.\n"
-                f"Scan File: {scan.scan_name}\n"
-                f"Anomalies detected ({findings_label}): {scan.detected}\n"
-                f"Telemetry Metric (Confidence/Percentage): {scan.confidence}%\n"
-                f"Raw Findings Details: {scan.notes or ''}\n\n"
-                f"{guidance_context}"
-                f"{risk_context}"
-                "Guidelines:\n"
-                "1. Speak in simple, comforting, non-medical language.\n"
-                "2. Directly acknowledge patient anxiety and validate emotions.\n"
-                "3. NEVER give a definitive diagnosis. Reiterate that this is an AI research tool.\n"
-                f"4. Always recommend consulting a qualified {specialist}.\n"
-                "5. Keep responses concise (under 3-4 paragraphs).\n"
-                "6. Never speculate beyond the provided details.\n"
-                f"7. {extra_instructions}\n"
-                "8. If severe distress is noted, recommend speaking to family or calling emergency medical services."
-            )
-            
-            # Format history for Anthropic message list API
-            messages = []
-            for h in history_objs:
-                messages.append({
-                    "role": h.role,
-                    "content": h.message
-                })
-                
-            # Call Claude
-            response = client.messages.create(
-                model="claude-3-5-sonnet-20241022",
-                max_tokens=800,
-                system=system_prompt,
-                messages=messages
-            )
-            
-            # Extract content text
-            assistant_response = response.content[0].text
-            
-        except Exception as e:
-            # On API failure, fall back to mock
-            print(f"[Chat API Error] Anthropic call failed, falling back to mock: {e}")
-            assistant_response = get_mock_response(user_msg_text, scan, language)
-    else:
-        # Fall back to mock when key is not configured
-        assistant_response = get_mock_response(user_msg_text, scan, language)
+    assistant_response = bot_res['message']
+    if bot_res.get('emotion_detected'):
+        emotion_detected = bot_res['emotion_detected']
         
     # Save assistant response to database
     ChatMessage.objects.create(
